@@ -16,6 +16,14 @@ def hello_world():
 @app.route('/') #Main page, will get the URL and the desired SLOs
 def index():
     return render_template('index.html') #This will render index.html for the user when localhost:5000/ is requested
+@app.route('/', methods = ['POST']) #Placeholder, the program recognises the forms entries
+def showsInputUrl():
+    url = request.form['userUrl']
+    successSLO = request.form['userSLOSuccess']
+    timeSLO = request.form['userSLOSpeed']
+    text = url + ', ' + str(successSLO) + ', ' + str(timeSLO)
+    print text
+    return text
 
 @app.route('/sli') #Error: 500 internal error, can't seem to make the requests library to work
 def get_data():
@@ -23,8 +31,8 @@ def get_data():
     start = time.time()
     r = requests.get('https://facebook.com')
     responseTime = time.time() - start
-    print responseTime
+    print responseTime #prints the respose time between before the request and after receiving the headers
     print r.status_code #returns the status of the request (200 for sucess)
-    return 'successful'
+    return 'success'
 if __name__ == '__main__': #The script that is going to be executed
-    app.run(debug=True) #This facilitates development since you don't have to restart everything for every time you change your app, similar to nodejs
+    app.run(debug = True) #This facilitates development since you don't have to restart everything for every time you change your app, similar to nodejs

@@ -3,6 +3,7 @@
 #It displays for each URL the current SLIs, the SLOs and wheter the SLOs are being met
 
 import requests #Library that will handle the HTTP requests
+import time
 from flask import Flask, render_template     #All Flask stuff
 from flask import request
 
@@ -19,7 +20,10 @@ def index():
 @app.route('/sli') #Error: 500 internal error, can't seem to make the requests library to work
 def get_data():
     #return 'hey man'
-    r = requests.get('https://api.github.com/events')
+    start = time.time()
+    r = requests.get('https://facebook.com')
+    responseTime = time.time() - start
+    print responseTime
     print r.status_code #returns the status of the request (200 for sucess)
     return 'successful'
 if __name__ == '__main__': #The script that is going to be executed

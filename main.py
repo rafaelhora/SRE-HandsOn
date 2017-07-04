@@ -30,42 +30,34 @@ def testSLI():
         speedSLI = testIteration.elapsed.total_seconds()
         successSLI = testIteration.status_code
 
-        if speedSLI <= 1.0: #not working properly don't know why, numbers conflicting maybe
+        if float(speedSLI) <= 0.3: #not working properly don't know why, numbers conflicting maybe
             speedSLOMet += 1
-        if successSLI > 199:
-            if successSLI < 500:
+        if int(successSLI) > 199:
+            if int(successSLI) < 500:
                 successSLOMet += 1
 
         iterations += 1
 
-        successPercentage = successSLOMet/iterations * 100
-        speedPercentage = speedSLOMet/iterations * 100 # returning always zero somehow
+        successPercentage = float(successSLOMet)/float(iterations) * 100 #always returns 100%
+        speedPercentage = float(speedSLOMet)/float(iterations) * 100
 
-        if successPercentage <= successSLO: # not working properly giving the opposed result, bruteforced inverting the logic
+        if int(successPercentage) >= int(successSLO): # not working properly giving the opposed result, bruteforced inverting the logic
             successFeedback = 'SLO OK!'
         else:
             successFeedback = 'SLO NOT OK!'
 
-        if speedPercentage <= speedSLO: #bruteforced inverting the logic
+        if int(speedPercentage) >= int(speedSLO): #bruteforced inverting the logic
             speedFeedback = 'SLO OK!'
         else:
             speedFeedback = 'SLO NOT OK!'
 
-        print ('iteration: '+ str(iterations) + ' ' + url + ' Status:' + str(successSLI) +', Successful requests SLI:' + str(successPercentage) +'% ('+ successFeedback + ')' + '. Response time:' + str(speedSLI) +'sec, Responses in less than 100ms SLI:' + str(speedPercentage) + '% (' + speedFeedback + ')')
-
+        ########DEBUG BLOCK
+        #comparasucesso = int(successPercentage) > int(successSLO)
+        #comparavelocidade = int(speedPercentage) > int(speedSLO)
+        #print(str(comparasucesso) + ', ' + str(comparavelocidade) + ' Success SLO:' + str(successSLO) + ' Speed SLO: ' + str(speedSLO) + ' Success SLI:' + str(successPercentage) + ' SpeedSLI:' + str(speedPercentage)
+        #print(str(speedSLOMet) + '/ porcentagem ' + str(speedPercentage))
+        #######END OF DEBUG BLOCK
+        print ('N: '+ str(iterations) + ' ' + url + ' Status:' + str(successSLI) +', Successful requests SLI:' + str(successPercentage) +'% ('+ successFeedback + ')' + '. Response time:' + str(speedSLI) +'sec, Responses in less than 100ms SLI:' + str(speedPercentage) + '% (' + speedFeedback + ')')
         time.sleep(5)
-    #print (url)
-    #return url
-
-#@app.route('/sli') #Error: 500 internal error, can't seem to make the requests library to work
-#def get_data():
-#    #return 'hey man'
-#    for i in range(0,10):
-#        start = time.time()
-#        r = requests.get('https://httpbin.org/anything')
-#        responseTime = time.time() - start
-#        print responseTime #prints the respose time between before the request and after receiving the headers
-#        print r.status_code #returns the status of the request (200 for sucess)
-#    return 'success'
 if __name__ == '__main__': #The script that is going to be executed
     app.run(debug = True) #This facilitates development since you don't have to restart everything for every time you change your app, similar to nodejs

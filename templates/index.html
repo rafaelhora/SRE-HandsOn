@@ -2,15 +2,32 @@
   <head>
     <meta charset="utf-8">
     <title>SREHands-On Inloco</title>
+    <script type="text/javascript" src="static/jquery-3.2.1.min.js"></script>
   </head>
   <body>
     <h1>Welcome to SRE Hands On App</h1>
     <h3>Please fill the forms below as instructed</h3>
-    <form action="/" method="post">
-    <input type="text" name="userUrl" placeholder="Put here the url that you want to see SLIs">
-    <input type="number" name="userSLOSuccess" placeholder="Put here your SLO for successful access" />
-    <input type="number" name="userSLOSpeed" placeholder=""="Put here SLO for response time">
-    <input type="submit" name="SLOSubmit" value="Submit">
+    <form action="/sreTester" method="post">
+    <input type="text" name="userUrl" id="testURL" placeholder="Put here the url that you want to see SLIs"><br/>
+    <br/><input type="number" name="userSLOSuccess" placeholder="Put here your SLO for successful access" width="400px"/><br/>
+    <br/><input type="number" name="userSLOSpeed" placeholder="Put here SLO for response time"><br/>
+    <br/><input type="submit" name="SLOSubmit" id="user-submit" value="Submit">
+
+    <div id="results-block">
+      <h5>Here are the results:</h5>
+      <ul id="results-list">
+
+      </ul>
+    </div>
+    <script>
+    $("#user-submit").submit(function(e){
+      e.preventDefault();
+      console.log('it works');
+
+    });
+
+
+    </script>
     </form>
   </body>
 </html>

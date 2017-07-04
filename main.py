@@ -17,7 +17,7 @@ def hello_world():
 def index():
     return render_template('index.html') #This will render index.html for the user when localhost:5000/ is requested
 
-@app.route('/sreTester', methods = ['POST']) #Placeholder, the program recognises the forms entries
+@app.route('/', methods = ['POST']) 
 def testSLI():
     url = request.form['userUrl']
     successSLO = request.form['userSLOSuccess']
@@ -30,7 +30,7 @@ def testSLI():
         speedSLI = testIteration.elapsed.total_seconds()
         successSLI = testIteration.status_code
 
-        if float(speedSLI) <= 0.3: #not working properly don't know why, numbers conflicting maybe
+        if float(speedSLI) <= 0.1:
             speedSLOMet += 1
         if int(successSLI) > 199:
             if int(successSLI) < 500:
@@ -41,17 +41,18 @@ def testSLI():
         successPercentage = float(successSLOMet)/float(iterations) * 100 #always returns 100%
         speedPercentage = float(speedSLOMet)/float(iterations) * 100
 
-        if int(successPercentage) >= int(successSLO): # not working properly giving the opposed result, bruteforced inverting the logic
+        if float(successPercentage) >= float(successSLO):
             successFeedback = 'SLO OK!'
         else:
             successFeedback = 'SLO NOT OK!'
 
-        if int(speedPercentage) >= int(speedSLO): #bruteforced inverting the logic
+        if float(speedPercentage) >= float(speedSLO):
             speedFeedback = 'SLO OK!'
         else:
             speedFeedback = 'SLO NOT OK!'
 
         ########DEBUG BLOCK
+        #print(str(successPercentage) + ', ' + str(successSLOMet) + ', ' + str(iterations))
         #comparasucesso = int(successPercentage) > int(successSLO)
         #comparavelocidade = int(speedPercentage) > int(speedSLO)
         #print(str(comparasucesso) + ', ' + str(comparavelocidade) + ' Success SLO:' + str(successSLO) + ' Speed SLO: ' + str(speedSLO) + ' Success SLI:' + str(successPercentage) + ' SpeedSLI:' + str(speedPercentage)

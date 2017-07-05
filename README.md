@@ -7,28 +7,28 @@ Flask is a microframework for Python based on Werkzeug. Great for simple project
 
 Instructions:
 
-1. How to setup: (For windows)
+How to setup: (For windows)
 
-1. a. Firstly download this project
-1. b. Install python Python 2.7.13 (not guaranteed working on 3.x.x versions) https://www.python.org/
-1. c. Install pip https://pip.pypa.io/en/stable/installing/
-1. d. Install flask with the command: pip install Flask - more details on http://flask.pocoo.org/
+1. Firstly download this project
+1. Install python Python 2.7.13 (not guaranteed working on 3.x.x versions) https://www.python.org/
+1. Install pip https://pip.pypa.io/en/stable/installing/
+1. Install flask with the command: pip install Flask - more details on http://flask.pocoo.org/
 
-2. How to run:
+How to run:
 
-1. a. Open the project folder in prompt of command or console if using Linux
-1. b. Type set FLASK_APP=main.py or set FLASK_APP=main.py
-1. c. Type Flask run
-1. d. Open localhost:5000
+1. Open the project folder in prompt of command or console if using Linux
+1. Type set FLASK_APP=main.py or set FLASK_APP=main.py
+1. Type Flask run
+1. Open localhost:5000
 
-3. How to use
+How to use
 
-3. a. Type the URL that you want to test (please don't forget the http://)
-3. b. Type the SLO for HTTP status between 200 and 499 in %
-3. c. Type the SLO for responses in less than 100ms in %
-3. d. Press Submit
-3. e. Results will apear in cmd or console and also will be written in results.txt in the project folder
-3. f. To interrupt press Ctrl+C
+3. Type the URL that you want to test (please don't forget the http://)
+3. Type the SLO for HTTP status between 200 and 499 in %
+3. Type the SLO for responses in less than 100ms in %
+3. Press Submit
+3. Results will apear in cmd or console and also will be written in results.txt in the project folder
+3. To interrupt press Ctrl+C
 
 Limitations: The limitations of this program are:
 

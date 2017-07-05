@@ -17,11 +17,13 @@ def hello_world():
 def index():
     return render_template('index.html') #This will render index.html for the user when localhost:5000/ is requested
 
-@app.route('/', methods = ['POST']) 
+@app.route('/sreTester', methods = ['POST'])
 def testSLI():
     url = request.form['userUrl']
     successSLO = request.form['userSLOSuccess']
     speedSLO = request.form['userSLOSpeed']
+    with open("results.txt", "w") as testSLIResults:
+        testSLIResults.write("Here are the results for {}".format(url))
     speedSLOMet = 0
     successSLOMet = 0
     iterations = 0
@@ -29,7 +31,6 @@ def testSLI():
         testIteration = requests.get(url)
         speedSLI = testIteration.elapsed.total_seconds()
         successSLI = testIteration.status_code
-
         if float(speedSLI) <= 0.1:
             speedSLOMet += 1
         if int(successSLI) > 199:
@@ -59,6 +60,9 @@ def testSLI():
         #print(str(speedSLOMet) + '/ porcentagem ' + str(speedPercentage))
         #######END OF DEBUG BLOCK
         print ('N: '+ str(iterations) + ' ' + url + ' Status:' + str(successSLI) +', Successful requests SLI:' + str(successPercentage) +'% ('+ successFeedback + ')' + '. Response time:' + str(speedSLI) +'sec, Responses in less than 100ms SLI:' + str(speedPercentage) + '% (' + speedFeedback + ')')
+        testSLIResults = open("results.txt", "a")
+        testSLIResults.write('\n N: '+ str(iterations) + ' ' + url + ' Status:' + str(successSLI) +', Successful requests SLI:' + str(successPercentage) +'% ('+ successFeedback + ')' + '. Response time:' + str(speedSLI) +'sec, Responses in less than 100ms SLI:' + str(speedPercentage) + '% (' + speedFeedback + ')')
+        testSLIResults.close()
         time.sleep(5)
 if __name__ == '__main__': #The script that is going to be executed
     app.run(debug = True) #This facilitates development since you don't have to restart everything for every time you change your app, similar to nodejs

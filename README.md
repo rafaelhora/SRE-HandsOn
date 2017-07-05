@@ -23,28 +23,28 @@ How to run:
 
 How to use
 
-3. Type the URL that you want to test (please don't forget the http://)
-3. Type the SLO for HTTP status between 200 and 499 in %
-3. Type the SLO for responses in less than 100ms in %
-3. Press Submit
-3. Results will apear in cmd or console and also will be written in results.txt in the project folder
-3. To interrupt press Ctrl+C
+1. Type the URL that you want to test (please don't forget the http://)
+1. Type the SLO for HTTP status between 200 and 499 in %
+1. Type the SLO for responses in less than 100ms in %
+1. Press Submit
+1. Results will apear in cmd or console and also will be written in results.txt in the project folder
+1. To interrupt press Ctrl+C
 
 Limitations: The limitations of this program are:
 
 1. Does not test multiple URLs per instance (but you can open multiple instances with different URLs).
-2. Does not show the results in a web app.
-3. Does not have input validation
-4. Does not have propper interruption mechanic
+1. Does not show the results in a web app.
+1. Does not have input validation
+1. Does not have propper interruption mechanic
 
 If i had more time, i'd add the following features:
 
 1. Better input validation
-2. Security measures
-3. A propper front using Jquery and Bootstrap
-4. Better presentation of data
-5. The ability to test multiple URLs per instance
-6. Propper interruption
+1. Security measures
+1. A propper front using Jquery and Bootstrap
+1. Better presentation of data
+1. The ability to test multiple URLs per instance
+1. Propper interruption
 
 #How the app works:
 

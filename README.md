@@ -17,7 +17,7 @@ How to setup: (For windows)
 How to run:
 
 1. Open the project folder in prompt of command or console if using Linux
-1. Type set FLASK_APP=main.py or set FLASK_APP=main.py
+1. Type set FLASK_APP=main.py or set FLASK_APP=main.py - use export insted of set for Linux
 1. Type Flask run
 1. Open localhost:5000
 
@@ -48,7 +48,7 @@ If i had more time, i'd add the following features:
 
 #How the app works:
 
-Flask is used to generate a server, this server renders the main page of the app, after the user input the information is sent back to the server. After getting the user input the server uses the given url to make a HTTP GET request using the python's request library and the response is stored in a object. This object has all the metadata needed to continue with the program. From the request is taken the status given from the URL and the time to answer the request, then those results are compared with the desired SLOs. Every time that the requests meets the goals given from the enunciate, its counted towards the respective variable. Then each iteration its compared wether the given from the user SLOs are being met and those informations are used to print in the console and also in a text flie the needed information.
+Flask is used to generate a server, this server renders the main page of the app, after the user input the information is sent back to the server. After getting the user input the server uses the given url to make a HTTP GET request using the python's request library and the response is stored in a object. This object has all the metadata needed to continue with the program. From the request is taken the status given from the URL and the time to answer the request, then those results are compared with the desired SLOs. Every time that the requests meets the goals given from the enunciate, its counted towards the respective variable. Then each iteration its compared wether the given from the user SLOs are being met and those informations are used to print in the console and also in a text flie the needed information. Waits 5 seconds and then repeats the loop.
 
 NOTES:
 - It was difficult to get a URL that returns a variable amount of statuses, mostly i got 200. But it used to test the http://httpstat.us/ and also http://amazon.com.br/ gave better results for debug.

@@ -2,32 +2,15 @@
   <head>
     <meta charset="utf-8">
     <title>SREHands-On Inloco</title>
-    <script type="text/javascript" src="static/jquery-3.2.1.min.js"></script>
   </head>
   <body>
     <h1>Welcome to SRE Hands On App</h1>
-    <h3>Please fill the forms below as instructed</h3>
-    <form action="/sreTester" method="post">
-    <input type="text" name="userUrl" id="testURL" placeholder="Put here the url that you want to see SLIs"><br/>
-    <br/><input type="number" name="userSLOSuccess" placeholder="Put here your SLO for successful access" width="400px"/><br/>
-    <br/><input type="number" name="userSLOSpeed" placeholder="Put here SLO for response time"><br/>
+    <h3>Please fill the forms below as instructed, results will appear in results.txt in app folder and in Flask console. You can interrup the process by pressing Ctrl + C.</h3>
+    <form action="/" method="post">
+    URL that you want to test: <input type="url" name="userUrl" size="36" id="testURL" placeholder="Put here the url that you want to see SLIs" required><br/>
+    <br/>SLO for successful access in %<input type="number" size ="12"min="0" max="100" name="userSLOSuccess" required/><br/>
+    <br/>Response time SLO in % <input type="number" min="0" max="100" name="userSLOSpeed"required><br/>
     <br/><input type="submit" name="SLOSubmit" id="user-submit" value="Submit">
-
-    <div id="results-block">
-      <h5>Here are the results:</h5>
-      <ul id="results-list">
-
-      </ul>
-    </div>
-    <script>
-    $("#user-submit").submit(function(e){
-      e.preventDefault();
-      console.log('it works');
-
-    });
-
-
-    </script>
     </form>
   </body>
 </html>
